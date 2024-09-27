@@ -20,4 +20,5 @@ from tankdesignersimulator import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.design, name='design'),
+    path('design/create', views.design, name='design'),
 ]
