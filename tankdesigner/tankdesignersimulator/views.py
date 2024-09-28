@@ -35,8 +35,14 @@ def design(request):
         lc = request.POST.get('Lc')
         hamb = request.POST.get('hamb')
 
+        # Aux variables
+        # -------------------------------------------------------------------------------------------
+
+        Pi = 3.1416
+
+
         # Data processing
-        # ------------------------------------------------------------------------------
+        # -------------------------------------------------------------------------------------------
 
         print("Tank Height:", tank_height)
         print("Tank Radius:", tank_radius)
@@ -116,8 +122,16 @@ def design(request):
         print("Domus", t_domus, "inches")
         print("Domus", t_domus * 25.1, "inches")
 
-        # TODO: Heat exchange
-        # ---------------------------------------------
+        # Thermal design / Diseño termico
+        # ---------------------------------------
+
+        Rtot = (math.log((r1_ext / r1_int)) / (2 * Pi * k1)) + (math.log((r2_int / r1_ext)) / (2 * Pi * kisolation)) + (
+                    math.log((r2_ext / r2_int)) / (2 * Pi * k2)) + (1 / (2 * Pi * hamb * r2_ext))
+        print('Rtot', Rtot)
+
+        q = ((t_environment - t_nitro) / Rtot) * lc
+
+        print('Heat Exchange (q)', q)
 
 
     return render(request, 'design.html')
