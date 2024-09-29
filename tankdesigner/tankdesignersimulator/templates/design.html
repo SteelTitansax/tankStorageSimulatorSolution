@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <form action="/create" method="post">
+            <form action="design/create" method="post">
                 {% csrf_token %}
                 <div id="firstFormPart">
                     <strong><label class="mb-3">Operation Params</label></strong>
@@ -35,7 +35,7 @@
                             <option value="">Select Pressure</option>
                             <option value="5">5</option>
                             <option value="8">8</option>
-                            <option value="10">10</option>
+                            <option value="10" selected>10</option>
                             <option value="12">12</option>
                         </select>
                     </div>
@@ -82,47 +82,47 @@
                     <strong><label class="mb-3">Thermal Design</label></strong>
                     <div class="form-group mb-2">
                         <label for="tEnvironment">T Environment</label>
-                        <input type="text" class="form-control" name="tEnvironment" id="tEnvironment" placeholder="T Environment (Cº)" required>
+                        <input type="text" class="form-control" name="tEnvironment" id="tEnvironment" placeholder="T Environment (Cº)" value="35" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="tNitro">T Nitro</label>
-                        <input type="text" class="form-control" name="tNitro" id="tNitro" placeholder="T Nitro (Cº)" required>
+                        <input type="text" class="form-control" name="tNitro" id="tNitro" placeholder="T Nitro (Cº)" value="-196" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="K1">K1 parameter</label>
-                        <input type="text" class="form-control" name="K1" id="K1" placeholder="K1 parameter" required>
+                        <input type="text" class="form-control" name="K1" id="K1" placeholder="K1 parameter" value="9.1" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="K2">K2 parameter</label>
-                        <input type="text" class="form-control" name="K2" id="K2" placeholder="K2 parameter" required>
+                        <input type="text" class="form-control" name="K2" id="K2" placeholder="K2 parameter" value="9.2" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="Kisolation">Kisolation parameter</label>
-                        <input type="text" class="form-control" name="Kisolation" id="Kisolation" placeholder="Kisolation parameter" required>
+                        <input type="text" class="form-control" name="Kisolation" id="Kisolation" placeholder="Kisolation parameter" value="0.016" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="R1int">Radius1 Intern</label>
-                        <input type="text" class="form-control" name="R1int" id="R1int" placeholder="R1int (m)" required>
+                        <input type="text" class="form-control" name="R1int" id="R1int" placeholder="R1int (m)" value="0.96" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="R1ext">Radius1 Extern</label>
-                        <input type="text" class="form-control" name="R1ext" id="R1ext" placeholder="R1ext (m)" required>
+                        <input type="text" class="form-control" name="R1ext" id="R1ext" placeholder="R1ext (m)" value="0.966" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="R2int">Radius2 Intern</label>
-                        <input type="text" class="form-control" name="R2int" id="R2int" placeholder="R2int (m)" required>
+                        <input type="text" class="form-control" name="R2int" id="R2int" placeholder="R2int (m)" value="1,108" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="R2ext">Radius2 Extern</label>
-                        <input type="text" class="form-control" name="R2ext" id="R2ext" placeholder="R2ext (m)" required>
+                        <input type="text" class="form-control" name="R2ext" id="R2ext" placeholder="R2ext (m)" value="1.120" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="Lc">Lc</label>
-                        <input type="text" class="form-control" name="Lc" id="Lc" placeholder="Lc (m)" required>
+                        <input type="text" class="form-control" name="Lc" id="Lc" placeholder="Lc (m)" value="4.55" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="hamb">h amb (Air thermal resistivity)</label>
-                        <input type="text" class="form-control" name="hamb" id="hamb" placeholder="hamb (W/m2 · K)" required>
+                        <input type="text" class="form-control" name="hamb" id="hamb" placeholder="hamb (W/m2 · K)" value="5" required>
                     </div>
                 </div>
                 <div class="container">
@@ -143,7 +143,7 @@
         </div>
         <div class="col-6 text-center">
             {% load static %}
-            <img src="{% static 'img/tankDiagram.png' %}" alt="tankDiagramImage" style="height: 32%; padding-left:40%">
+            <img src="{% static 'img/tankDiagram.png' %}" alt="tankDiagramImage" style="height: 32%; padding-left:25%">
             <img src="{% static 'img/tankHeatDiagram.png' %}" alt="tankHeatDiagramImage" style="margin-top: 50px; height: 27%; padding-left:20%">
         </div>
     </div>
