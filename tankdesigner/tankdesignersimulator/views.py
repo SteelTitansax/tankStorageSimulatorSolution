@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
+import math
 
 def design(request):
 
@@ -9,31 +9,31 @@ def design(request):
         # First part fields
         # --------------------------------------------------------------------------------------------
 
-        tank_height = request.POST.get('tankHeight')
-        tank_radius = request.POST.get('tankRadius')
-        working_temperature = request.POST.get('workingTemperature')
-        working_pressure = request.POST.get('workingPressure')
-        cloak_pressure_design = request.POST.get('cloakPressureDesign')
-        external_cloak_radius = request.POST.get('externalClockRadius')
-        working_effort_admissible = request.POST.get('workingEffortAdmissibleAcerInoxTemp')
-        efficiency_of_welded_join = request.POST.get('efficiencyOfTheWeldedJoin')
-        domus_pressure_design = request.POST.get('domusPressureDesign')
-        external_domus_radius = request.POST.get('externalDomusRadius')
+        tank_height = float(request.POST.get('tankHeight'))
+        tank_radius = float(request.POST.get('tankRadius'))
+        working_temperature = float(request.POST.get('workingTemperature'))
+        working_pressure = float(request.POST.get('workingPressure'))
+        cloak_pressure_design = float(request.POST.get('cloakPressureDesign'))
+        external_cloak_radius = float(request.POST.get('externalClockRadius'))
+        working_effort_admissible = float(request.POST.get('workingEffortAdmissibleAcerInoxTemp'))
+        efficiency_of_welded_join = float(request.POST.get('efficiencyOfTheWeldedJoin'))
+        domus_pressure_design = float(request.POST.get('domusPressureDesign'))
+        external_domus_radius = float(request.POST.get('externalDomusRadius'))
 
         # Second part fields
         # --------------------------------------------------------------------------------------------
 
-        t_environment = request.POST.get('tEnvironment')
-        t_nitro = request.POST.get('tNitro')
-        k1 = request.POST.get('K1')
-        k2 = request.POST.get('K2')
-        kisolation = request.POST.get('Kisolation')
-        r1_int = request.POST.get('R1int')
-        r1_ext = request.POST.get('R1ext')
-        r2_int = request.POST.get('R2int')
-        r2_ext = request.POST.get('R2ext')
-        lc = request.POST.get('Lc')
-        hamb = request.POST.get('hamb')
+        t_environment = float(request.POST.get('tEnvironment'))
+        t_nitro = float(request.POST.get('tNitro'))
+        k1 = float(request.POST.get('K1'))
+        k2 = float(request.POST.get('K2'))
+        kisolation = float(request.POST.get('Kisolation'))
+        r1_int = float(request.POST.get('R1int'))
+        r1_ext = float(request.POST.get('R1ext'))
+        r2_int = float(request.POST.get('R2int'))
+        r2_ext = float(request.POST.get('R2ext'))
+        lc = float(request.POST.get('Lc'))
+        hamb = float(request.POST.get('hamb'))
 
         # Aux variables
         # -------------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ def design(request):
         v_dome = (2 / 3) * pi * pow(tank_radius, 3)
         V = (v_cilinder + v_dome) * 1000  # L
         print('V', V)
-        n = (working_pressure * V) / (0.0821 * T)
+        n = (working_pressure * V) / (0.0821 * working_temperature)
         print('n', n)
         nitrogen_moles_mass = 28  # g/mol
         m = n * nitrogen_moles_mass * 0.001  # Kg
@@ -93,7 +93,7 @@ def design(request):
         print('V internal Tank', v_internal_tank)
         v_isolation = v_external_tank - v_internal_tank
         print('vIsolation', v_isolation)
-        metalic_weight = Vsteel * steel_density  # kg
+        metalic_weight = v_steel * steel_density  # kg
         print('metalic weight', metalic_weight)
         isolating_material_weight = v_isolation * isolate_material_density  # kg
         print('isolating material weight', isolating_material_weight)
@@ -112,7 +112,7 @@ def design(request):
         t_cloak = cloak_pressure_design * external_cloak_radius / ((working_effort_admissible * efficiency_of_welded_join) - 0.6 * cloak_pressure_design)
 
         print("Cloak", t_cloak, "inches")
-        print("Cloak", t_cloak * 25.1, "inches")
+        print("Cloak", t_cloak * 25.1, "mm")
 
         # Domus design / diseño del domo
         # ------------------------------
@@ -120,7 +120,7 @@ def design(request):
         t_domus = (domus_pressure_design * 2*external_domus_radius) / ((2 * working_effort_admissible * efficiency_of_welded_join) - (0.2 * domus_pressure_design))
 
         print("Domus", t_domus, "inches")
-        print("Domus", t_domus * 25.1, "inches")
+        print("Domus", t_domus * 25.1, "mm")
 
         # Thermal design / Diseño termico
         # ---------------------------------------

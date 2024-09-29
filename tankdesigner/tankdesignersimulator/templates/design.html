@@ -12,11 +12,11 @@
                     <strong><label class="mb-3">Operation Params</label></strong>
                     <div class="form-group mb-2">
                         <label for="tankHeight">Tank Height</label>
-                        <input type="text" class="form-control" name="tankHeight" id="tankHeight" placeholder="Tank Height (m)" value="3" required>
+                        <input type="number" class="form-control" name="tankHeight" id="tankHeight" placeholder="Tank Height (m)" value="3" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="tankRadius">Tank Radius</label>
-                        <input type="text" class="form-control" name="tankRadius" id="tankRadius" placeholder="Tank Radius (m)" value="1.5" required>
+                        <input type="number" class="form-control" name="tankRadius" id="tankRadius" placeholder="Tank Radius (m)" value="1.5" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="workingTemperature">Temperature (Kº)</label>
@@ -52,15 +52,15 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="externalClockRadius">External Cloak Radius</label>
-                        <input type="text" class="form-control" name="externalClockRadius" id="externalClockRadius" placeholder="External Cloak Radius (inches)" value="38.03" required>
+                        <input type="number" class="form-control" name="externalClockRadius" id="externalClockRadius" placeholder="External Cloak Radius (inches)" value="38.03" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="workingEffortAdmissibleAcerInoxTemp">Working effort admissible (ACERINOX AISI 304 vs temp)</label>
-                        <input type="text" class="form-control" name="workingEffortAdmissibleAcerInoxTemp" id="workingEffortAdmissibleAcerInoxTemp" placeholder="Working effort admissible (lbs/inch2)" value="18800" required>
+                        <input type="number" class="form-control" name="workingEffortAdmissibleAcerInoxTemp" id="workingEffortAdmissibleAcerInoxTemp" placeholder="Working effort admissible (lbs/inch2)" value="18800" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="efficiencyOfTheWeldedJoin">Efficiency of the welded join</label>
-                        <input type="text" class="form-control" name="efficiencyOfTheWeldedJoin" id="efficiencyOfTheWeldedJoin" placeholder="Efficiency of the welded join" value="0.85" required>
+                        <input type="number" class="form-control" name="efficiencyOfTheWeldedJoin" id="efficiencyOfTheWeldedJoin" placeholder="Efficiency of the welded join" value="0.85" required>
                     </div>
                     <strong><label class="mb-3">Domus Design</label></strong>
                     <div class="form-group mb-2">
@@ -75,54 +75,54 @@
                     </div>
                     <div class="form-group mb-2">
                         <label for="externalDomusRadius">External Domus Radius</label>
-                        <input type="text" class="form-control" name="externalDomusRadius" id="externalDomusRadius" placeholder="External Domus Radius (inches)" value="38.0315" required>
+                        <input type="number" class="form-control" name="externalDomusRadius" id="externalDomusRadius" placeholder="External Domus Radius (inches)" value="38.0315" required>
                     </div>
                 </div>
                 <div id="secondPartForm" class="d-none">
                     <strong><label class="mb-3">Thermal Design</label></strong>
                     <div class="form-group mb-2">
                         <label for="tEnvironment">T Environment</label>
-                        <input type="text" class="form-control" name="tEnvironment" id="tEnvironment" placeholder="T Environment (Cº)" value="35" required>
+                        <input type="number" class="form-control" name="tEnvironment" id="tEnvironment" placeholder="T Environment (Cº)" value="35" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="tNitro">T Nitro</label>
-                        <input type="text" class="form-control" name="tNitro" id="tNitro" placeholder="T Nitro (Cº)" value="-196" required>
+                        <input type="number" class="form-control" name="tNitro" id="tNitro" placeholder="T Nitro (Cº)" value="-196" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="K1">K1 parameter</label>
-                        <input type="text" class="form-control" name="K1" id="K1" placeholder="K1 parameter" value="9.1" required>
+                        <input type="number" class="form-control" name="K1" id="K1" placeholder="K1 parameter" value="9.2" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="K2">K2 parameter</label>
-                        <input type="text" class="form-control" name="K2" id="K2" placeholder="K2 parameter" value="9.2" required>
+                        <input type="text" class="form-control" name="K2" id="K2" placeholder="K2 parameter" value="60.5" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="Kisolation">Kisolation parameter</label>
-                        <input type="text" class="form-control" name="Kisolation" id="Kisolation" placeholder="Kisolation parameter" value="0.016" required>
+                        <input type="number" class="form-control" name="Kisolation" id="Kisolation" placeholder="Kisolation parameter" value="0.016" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="R1int">Radius1 Intern</label>
-                        <input type="text" class="form-control" name="R1int" id="R1int" placeholder="R1int (m)" value="0.96" required>
+                        <input type="number" class="form-control" name="R1int" id="R1int" placeholder="R1int (m)" value="0.96" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="R1ext">Radius1 Extern</label>
-                        <input type="text" class="form-control" name="R1ext" id="R1ext" placeholder="R1ext (m)" value="0.966" required>
+                        <input type="number" class="form-control" name="R1ext" id="R1ext" placeholder="R1ext (m)" value="0.966" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="R2int">Radius2 Intern</label>
-                        <input type="text" class="form-control" name="R2int" id="R2int" placeholder="R2int (m)" value="1,108" required>
+                        <input type="number" class="form-control" name="R2int" id="R2int" placeholder="R2int (m)" value="1.108" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="R2ext">Radius2 Extern</label>
-                        <input type="text" class="form-control" name="R2ext" id="R2ext" placeholder="R2ext (m)" value="1.120" required>
+                        <input type="number" class="form-control" name="R2ext" id="R2ext" placeholder="R2ext (m)" value="1.120" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="Lc">Lc</label>
-                        <input type="text" class="form-control" name="Lc" id="Lc" placeholder="Lc (m)" value="4.55" required>
+                        <input type="number" class="form-control" name="Lc" id="Lc" placeholder="Lc (m)" value="4.55" required>
                     </div>
                     <div class="form-group mb-2">
                         <label for="hamb">h amb (Air thermal resistivity)</label>
-                        <input type="text" class="form-control" name="hamb" id="hamb" placeholder="hamb (W/m2 · K)" value="5" required>
+                        <input type="number" class="form-control" name="hamb" id="hamb" placeholder="hamb (W/m2 · K)" value="5" required>
                     </div>
                 </div>
                 <div class="container">
