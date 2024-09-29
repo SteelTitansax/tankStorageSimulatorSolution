@@ -1,181 +1,122 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Designer first row -->
-
+<!-- Recalculate -->
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <form action="design/create" method="post">
-                {% csrf_token %}
-                <div id="firstFormPart">
-                    <strong><label class="mb-3">Operation Params</label></strong>
-                    <div class="form-group mb-2">
-                        <label for="tankHeight">Tank Height</label>
-                        <input type="number" class="form-control" name="tankHeight" id="tankHeight" placeholder="Tank Height (m)" value="3" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="tankRadius">Tank Radius</label>
-                        <input type="number" class="form-control" name="tankRadius" id="tankRadius" placeholder="Tank Radius (m)" value="1.5" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="workingTemperature">Temperature (Kº)</label>
-                        <select class="form-control" name="workingTemperature" id="workingTemperature" required>
-                            <option value="">Select Temperature</option>
-                            <option value="98" selected>98</option>
-                            <option value="108">108</option>
-                            <option value="118">118</option>
-                            <option value="128">128</option>
-                            <option value="138">138</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="workingPressure">Pressure (atm)</label>
-                        <select class="form-control" name="workingPressure" id="workingPressure" required>
-                            <option value="">Select Pressure</option>
-                            <option value="5">5</option>
-                            <option value="8">8</option>
-                            <option value="10" selected>10</option>
-                            <option value="12">12</option>
-                        </select>
-                    </div>
-                    <strong><label class="mt-3 mb-3">Cloak Design</label></strong>
-                    <div class="form-group mb-2">
-                        <label for="cloakPressureDesign">Design Pressure (lbs/inch2)</label>
-                        <select class="form-control" name="cloakPressureDesign" id="cloakPressureDesign" required>
-                            <option value="44.26">44.26</option>
-                            <option value="54.26">54.26</option>
-                            <option value="64.26">64.26</option>
-                            <option value="74.26">74.26</option>
-                            <option value="84.26" selected>84.26</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="externalClockRadius">External Cloak Radius</label>
-                        <input type="number" class="form-control" name="externalClockRadius" id="externalClockRadius" placeholder="External Cloak Radius (inches)" value="38.03" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="workingEffortAdmissibleAcerInoxTemp">Working effort admissible (ACERINOX AISI 304 vs temp)</label>
-                        <input type="number" class="form-control" name="workingEffortAdmissibleAcerInoxTemp" id="workingEffortAdmissibleAcerInoxTemp" placeholder="Working effort admissible (lbs/inch2)" value="18800" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="efficiencyOfTheWeldedJoin">Efficiency of the welded join</label>
-                        <input type="number" class="form-control" name="efficiencyOfTheWeldedJoin" id="efficiencyOfTheWeldedJoin" placeholder="Efficiency of the welded join" value="0.85" required>
-                    </div>
-                    <strong><label class="mb-3">Domus Design</label></strong>
-                    <div class="form-group mb-2">
-                        <label for="domusPressureDesign">Design Pressure (lbs/inch2)</label>
-                        <select class="form-control" name="domusPressureDesign" id="domusPressureDesign"  required>
-                            <option value="44.26">44.26</option>
-                            <option value="54.26">54.26</option>
-                            <option value="64.26">64.26</option>
-                            <option value="74.26">74.26</option>
-                            <option value="84.26" selected>84.26</option>
-                        </select>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="externalDomusRadius">External Domus Radius</label>
-                        <input type="number" class="form-control" name="externalDomusRadius" id="externalDomusRadius" placeholder="External Domus Radius (inches)" value="38.0315" required>
-                    </div>
-                </div>
-                <div id="secondPartForm" class="d-none">
-                    <strong><label class="mb-3">Thermal Design</label></strong>
-                    <div class="form-group mb-2">
-                        <label for="tEnvironment">T Environment</label>
-                        <input type="number" class="form-control" name="tEnvironment" id="tEnvironment" placeholder="T Environment (Cº)" value="35" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="tNitro">T Nitro</label>
-                        <input type="number" class="form-control" name="tNitro" id="tNitro" placeholder="T Nitro (Cº)" value="-196" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="K1">K1 parameter</label>
-                        <input type="number" class="form-control" name="K1" id="K1" placeholder="K1 parameter" value="9.2" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="K2">K2 parameter</label>
-                        <input type="text" class="form-control" name="K2" id="K2" placeholder="K2 parameter" value="60.5" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="Kisolation">Kisolation parameter</label>
-                        <input type="number" class="form-control" name="Kisolation" id="Kisolation" placeholder="Kisolation parameter" value="0.016" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="R1int">Radius1 Intern</label>
-                        <input type="number" class="form-control" name="R1int" id="R1int" placeholder="R1int (m)" value="0.96" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="R1ext">Radius1 Extern</label>
-                        <input type="number" class="form-control" name="R1ext" id="R1ext" placeholder="R1ext (m)" value="0.966" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="R2int">Radius2 Intern</label>
-                        <input type="number" class="form-control" name="R2int" id="R2int" placeholder="R2int (m)" value="1.108" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="R2ext">Radius2 Extern</label>
-                        <input type="number" class="form-control" name="R2ext" id="R2ext" placeholder="R2ext (m)" value="1.120" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="Lc">Lc</label>
-                        <input type="number" class="form-control" name="Lc" id="Lc" placeholder="Lc (m)" value="4.55" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="hamb">h amb (Air thermal resistivity)</label>
-                        <input type="number" class="form-control" name="hamb" id="hamb" placeholder="hamb (W/m2 · K)" value="5" required>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row pt-2">
-                        <div class="col-1"></div>
-                        <div class="col-4">
-                            <button id="backButton" class="btn btn-secondary w-100" onclick="backFisrtFormPart()">Back</button>
+            <div class="container mt-5">
+                <h2>Calculation Results</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Volume (V)</td>
+                            <td>{{ results.v }}</td>
+                        </tr>
+                        <tr>
+                            <td>Moles of Nitrogen (n)</td>
+                            <td>{{ results.n }}</td>
+                        </tr>
+                        <tr>
+                            <td>Mass of Nitrogen (m) [kg]</td>
+                            <td>{{ results.m }}</td>
+                        </tr>
+                        <tr>
+                            <td>Metallic Weight [kg]</td>
+                            <td>{{ results.metallic_weight }}</td>
+                        </tr>
+                        <tr>
+                            <td>Isolating Material Weight [kg]</td>
+                            <td>{{ results.isolating_material_weight }}</td>
+                        </tr>
+                        <tr>
+                            <td>Empty Tank Weight [kg]</td>
+                            <td>{{ results.empty_tank_weight }}</td>
+                        </tr>
+                        <tr>
+                            <td>Full Tank Weight [kg]</td>
+                            <td>{{ results.full_tank_weight }}</td>
+                        </tr>
+                        <tr>
+                            <td>Cloak Thickness [inches]</td>
+                            <td>{{ results.t_cloak_inches }}</td>
+                        </tr>
+                        <tr>
+                            <td>Cloak Thickness [mm]</td>
+                            <td>{{ results.t_cloak_mm }}</td>
+                        </tr>
+                        <tr>
+                            <td>Domus Thickness [inches]</td>
+                            <td>{{ results.t_domus_inches }}</td>
+                        </tr>
+                        <tr>
+                            <td>Domus Thickness [mm]</td>
+                            <td>{{ results.t_domus_mm }}</td>
+                        </tr>
+                        <tr>
+                            <td>Heat Exchange (q)</td>
+                            <td>{{ results.q }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Design Recalculation</h3>
+                <form method="POST" action="{% url 'recalculate' %}">
+                    {% csrf_token %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="tankHeight">Tank Height</label>
+                                    <input type="text" class="form-control" id="tankHeight" name="tankHeight" value="{{ results.tank_height }}" required>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="tankRadius">Tank Radius</label>
+                                    <input type="text" class="form-control" id="tankRadius" name="tankRadius" value="{{ results.tank_radius }}" required>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="workingTemperature">W. Temperature</label>
+                                    <input type="text" class="form-control" id="workingTemperature" name="workingTemperature" value="{{ results.working_temperature }}" required>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="workingPressure">W. Pressure</label>
+                                    <input type="text" class="form-control" id="workingPressure" name="workingPressure" value="{{ results.working_pressure }}" required>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-2"></div>
-                        <div class="col-4">
-                            <button id="nextButton" class="btn btn-primary w-100" onclick="displaySecondFormPart()">Next</button>
-                            <button id="submitButton" class="btn btn-primary w-100" type="submit">Submit</button>
+                        <br/>
+                        <div class="row">
+                            <div class="col-2"></div>
+                            <div class="col-3">
+                                <a href="/" class="btn btn-secondary w-100">Back Design</a>
+                            </div>
+                            <div class="col-2"></div>
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-primary w-100">Recalculate</button>
+                            </div>
+                            <div class="col-2"></div>
                         </div>
-                        <div class="col-1"></div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-        <div class="col-6 text-center">
+       <div class="col-6 text-center">
             {% load static %}
             <img src="{% static 'img/tankDiagram.png' %}" alt="tankDiagramImage" style="height: 32%; padding-left:25%">
             <img src="{% static 'img/tankHeatDiagram.png' %}" alt="tankHeatDiagramImage" style="margin-top: 50px; height: 27%; padding-left:20%">
         </div>
     </div>
 </div>
-
-<script>
-    var firstFormPart = document.getElementById("firstFormPart");
-    var secondPartForm = document.getElementById("secondPartForm");
-    var nextButton = document.getElementById("nextButton");
-    var backButton = document.getElementById("backButton");
-    var submitButton = document.getElementById("submitButton");
-
-    // Initial layout
-    secondPartForm.classList.add("d-none");
-    backButton.classList.add("d-none");
-    submitButton.classList.add("d-none");
-
-    function displaySecondFormPart() {
-        firstFormPart.classList.add("d-none");
-        secondPartForm.classList.remove("d-none");
-        nextButton.classList.add("d-none");
-        backButton.classList.remove("d-none");
-        submitButton.classList.remove("d-none");
-    }
-
-    function backFisrtFormPart() {
-        firstFormPart.classList.remove("d-none");
-        secondPartForm.classList.add("d-none");
-        nextButton.classList.remove("d-none");
-        backButton.classList.add("d-none");
-        submitButton.classList.add("d-none");
-    }
-</script>
-
 {% endblock %}
