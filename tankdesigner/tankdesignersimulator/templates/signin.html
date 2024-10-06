@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br/>
+
+<h1 class="text-center">Sign In</h1>
+
+{{error}}
+
+<div class = "text-center">
+    <br/><br/>
+    <div class=" container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <form class="card card-body" action="/signin/" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder ="Password" name="password">
+                    </div>
+                    
+                    <button class="btn btn-success">
+                        Sign In
+                    </button>
+                </form>
+            </div>
+            <div class="col"></div>
+
+        </div>
+
+    </div>
+    
+</div>
+
+
+{% endblock %}
+
