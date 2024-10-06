@@ -19,9 +19,11 @@ from django.urls import path
 from tankdesignersimulator import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.design, name='design'),
-    path('design/create', views.design, name='design'),
-    path('recalculate', views.recalculate, name='recalculate'),
-    path('report', views.report, name='report'),
-
+    path('',views.home, name='home'),
+    path('signup/',views.signup,name='signup'),
+    path('logout/', views.signout, name='logout'),
+    path('signin/',views.signin,name='signin'),
+    path('design', views.design, name='design'),
+    path('recalculate/', views.recalculate, name='recalculate'),
+    path('report/', views.report, name='report')
 ]

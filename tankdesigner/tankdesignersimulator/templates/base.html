@@ -32,11 +32,12 @@
 
 
         <ul class="nav nav-pills flex-column mb-auto">
-            <h5 class="nav-title">Tank Simulator</h5>
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"></a>
+
+            <a href="/" class="text-white"><h5 class="nav-title">Tank Simulator</h5></a>
             <hr>
+        {% if user.is_authenticated %}
             <li class="nav-item">
-                <a href="/" class="nav-link text-white">
+                <a href="/design" class="nav-link text-white">
                     <h6>Design</h6>
                 </a>
             </li>
@@ -52,10 +53,20 @@
                     <h6>Recalculate</h6>
                 </a>
             </li>
+
         </ul>
-        <hr>
-        <div class="dropdown">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12">
+                    <a class="btn #fafafa grey lighten-5 text-black" href="/logout"> Log out </a>
+                </div>
+
+            </div>
         </div>
+
+        {% endif %}
+
     </div>
 
     <!-- Content area -->
