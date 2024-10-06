@@ -5,9 +5,8 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <div class="container mt-5">
-                <h2>Calculation Results</h2>
-                <table class="table table-bordered">
+                <h5>Calculation Results</h5>
+                <table class="table responsive-table">
                     <thead>
                         <tr>
                             <th>Parameter</th>
@@ -66,10 +65,10 @@
                     </tbody>
                 </table>
 
-                <h3>Design Recalculation</h3>
+                <h5>Design Recalculation</h5>
                 <form method="POST" action="{% url 'recalculate' %}">
                     {% csrf_token %}
-                    <div class="container">
+
                         <div class="row">
                             <div class="col-3">
                                 <div class="form-group">
@@ -83,9 +82,10 @@
                                     <input type="text" class="form-control" id="tankRadius" name="tankRadius" value="{{ results.tank_radius }}" required>
                                 </div>
                             </div>
+
                             <div class="col-3">
                                 <div class="form-group">
-                                    <label for="workingTemperature">W. Temperature</label>
+                                    <label for="workingTemperature">W. Temp.</label>
                                     <input type="text" class="form-control" id="workingTemperature" name="workingTemperature" value="{{ results.working_temperature }}" required>
                                 </div>
                             </div>
@@ -96,23 +96,18 @@
                                 </div>
                             </div>
                         </div>
-                        <br/>
                         <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col-3">
-                                <a href="/" class="btn btn-secondary w-100">Back Design</a>
-                            </div>
-                            <div class="col-2"></div>
-                            <div class="col-3">
+
+                            <div class="col-12">
                                 <button type="submit" class="btn btn-primary w-100">Recalculate</button>
                             </div>
-                            <div class="col-2"></div>
+
                         </div>
-                    </div>
+
                 </form>
-            </div>
+
         </div>
-       <div class="col-6 text-center">
+       <div class="col s6 text-center">
             {% load static %}
             <img src="{% static 'img/tankDiagram.png' %}" alt="tankDiagramImage" style="height: 32%; padding-left:25%">
             <img src="{% static 'img/tankHeatDiagram.png' %}" alt="tankHeatDiagramImage" style="margin-top: 50px; height: 27%; padding-left:20%">

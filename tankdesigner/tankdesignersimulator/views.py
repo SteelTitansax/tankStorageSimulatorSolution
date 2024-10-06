@@ -30,7 +30,7 @@ def design(request):
         r2_int = float(request.POST.get('R2int'))
         r2_ext = float(request.POST.get('R2ext'))
         lc = float(request.POST.get('Lc'))
-        hamb = float(request.POST.get('hamb'))
+        hamb = 5
 
         # Realiza los cálculos (puedes extraer esta lógica a una función separada)
         results = perform_calculations(
