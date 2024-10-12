@@ -5,113 +5,215 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-                <h5>Calculation Results</h5>
-                <table class="table responsive-table">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Volume (V)</td>
-                            <td>{{ results.v }}</td>
-                        </tr>
-                        <tr>
-                            <td>Moles of Nitrogen (n)</td>
-                            <td>{{ results.n }}</td>
-                        </tr>
-                        <tr>
-                            <td>Mass of Nitrogen (m) [kg]</td>
-                            <td>{{ results.m }}</td>
-                        </tr>
-                        <tr>
-                            <td>Metallic Weight [kg]</td>
-                            <td>{{ results.metallic_weight }}</td>
-                        </tr>
-                        <tr>
-                            <td>Isolating Material Weight [kg]</td>
-                            <td>{{ results.isolating_material_weight }}</td>
-                        </tr>
-                        <tr>
-                            <td>Empty Tank Weight [kg]</td>
-                            <td>{{ results.empty_tank_weight }}</td>
-                        </tr>
-                        <tr>
-                            <td>Full Tank Weight [kg]</td>
-                            <td>{{ results.full_tank_weight }}</td>
-                        </tr>
-                        <tr>
-                            <td>Cloak Thickness [inches]</td>
-                            <td>{{ results.t_cloak_inches }}</td>
-                        </tr>
-                        <tr>
-                            <td>Cloak Thickness [mm]</td>
-                            <td>{{ results.t_cloak_mm }}</td>
-                        </tr>
-                        <tr>
-                            <td>Domus Thickness [inches]</td>
-                            <td>{{ results.t_domus_inches }}</td>
-                        </tr>
-                        <tr>
-                            <td>Domus Thickness [mm]</td>
-                            <td>{{ results.t_domus_mm }}</td>
-                        </tr>
-                        <tr>
-                            <td>Heat Exchange (q)</td>
-                            <td>{{ results.q }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <h5>Calculation Results</h5>
+            <table class="table responsive-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Volume (V)</td>
+                        <td>{{ results.v }}</td>
+                    </tr>
+                    <tr>
+                        <td>Moles of Nitrogen (n)</td>
+                        <td>{{ results.n }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mass of Nitrogen (m) [kg]</td>
+                        <td>{{ results.m }}</td>
+                    </tr>
+                    <tr>
+                        <td>Metallic Weight [kg]</td>
+                        <td>{{ results.metallic_weight }}</td>
+                    </tr>
+                    <tr>
+                        <td>Isolating Material Weight [kg]</td>
+                        <td>{{ results.isolating_material_weight }}</td>
+                    </tr>
+                    <tr>
+                        <td>Empty Tank Weight [kg]</td>
+                        <td>{{ results.empty_tank_weight }}</td>
+                    </tr>
+                    <tr>
+                        <td>Full Tank Weight [kg]</td>
+                        <td>{{ results.full_tank_weight }}</td>
+                    </tr>
+                    <tr>
+                        <td>Cloak Thickness [inches]</td>
+                        <td>{{ results.t_cloak_inches }}</td>
+                    </tr>
+                    <tr>
+                        <td>Cloak Thickness [mm]</td>
+                        <td>{{ results.t_cloak_mm }}</td>
+                    </tr>
+                    <tr>
+                        <td>Domus Thickness [inches]</td>
+                        <td>{{ results.t_domus_inches }}</td>
+                    </tr>
+                    <tr>
+                        <td>Domus Thickness [mm]</td>
+                        <td>{{ results.t_domus_mm }}</td>
+                    </tr>
+                    <tr>
+                        <td>Heat Exchange (q)</td>
+                        <td>{{ results.q }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-                <h5>Design Recalculation</h5>
-                <form method="POST" action="{% url 'recalculate' %}">
-                    {% csrf_token %}
-
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label for="tankHeight">Tank Height</label>
-                                    <input type="text" class="form-control" id="tankHeight" name="tankHeight" value="{{ results.tank_height }}" required>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label for="tankRadius">Tank Radius</label>
-                                    <input type="text" class="form-control" id="tankRadius" name="tankRadius" value="{{ results.tank_radius }}" required>
-                                </div>
-                            </div>
-
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label for="workingTemperature">W. Temp.</label>
-                                    <input type="text" class="form-control" id="workingTemperature" name="workingTemperature" value="{{ results.working_temperature }}" required>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="form-group">
-                                    <label for="workingPressure">W. Pressure</label>
-                                    <input type="text" class="form-control" id="workingPressure" name="workingPressure" value="{{ results.working_pressure }}" required>
-                                </div>
-                            </div>
+            <h5>Design Recalculation</h5>
+            <form method="POST" action="{% url 'recalculate' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="tankHeight">Tank Height</label>
+                            <input type="text" class="form-control" id="tankHeight" name="tankHeight" value="{{ results.tank_height }}" required>
                         </div>
-                        <div class="row">
-
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary w-100">Recalculate</button>
-                            </div>
-
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="tankRadius">Tank Radius</label>
+                            <input type="text" class="form-control" id="tankRadius" name="tankRadius" value="{{ results.tank_radius }}" required>
                         </div>
+                    </div>
 
-                </form>
-
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="workingTemperature">W. Temp.</label>
+                            <input type="text" class="form-control" id="workingTemperature" name="workingTemperature" value="{{ results.working_temperature }}" required>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="workingPressure">W. Pressure</label>
+                            <input type="text" class="form-control" id="workingPressure" name="workingPressure" value="{{ results.working_pressure }}" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100">Recalculate</button>
+                    </div>
+                </div>
+            </form>
         </div>
-       <div class="col s6 text-center">
-            {% load static %}
-            <img src="{% static 'img/tankDiagram.png' %}" alt="tankDiagramImage" style="height: 32%; padding-left:25%">
-            <img src="{% static 'img/tankHeatDiagram.png' %}" alt="tankHeatDiagramImage" style="margin-top: 50px; height: 27%; padding-left:20%">
+        <div class="col-6 text-center">
+            <h5>3D Tank Model</h5>
+            <div id="tankCanvas" style="width: 100%; height: 700px;"></div> <!-- Contenedor para Three.js -->
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let tankGroup; // Grupo para almacenar el tanque y las patas
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Inicializar la escena de Three.js
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xf5f5f5);
+
+        const camera = new THREE.PerspectiveCamera(
+            75,
+            document.getElementById('tankCanvas').clientWidth / document.getElementById('tankCanvas').clientHeight,
+            0.1,
+            1000
+        );
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(document.getElementById('tankCanvas').clientWidth, document.getElementById('tankCanvas').clientHeight);
+        document.getElementById('tankCanvas').appendChild(renderer.domElement);
+
+        // Inicializar el tanque
+        function initTank(radius, height) {
+            const geometryTank = new THREE.CylinderGeometry(radius, radius, height, 32);
+            const materialTank = new THREE.MeshStandardMaterial({ color: 0x757575, metalness: 0.7, roughness: 0.5 });
+            const tank = new THREE.Mesh(geometryTank, materialTank);
+
+            // Crear patas del tanque
+            const legGeometry = new THREE.CylinderGeometry(0.1, 0.1, 2, 32);
+            const materialLeg = new THREE.MeshStandardMaterial({ color: 0x757575, metalness: 0.7, roughness: 0.5 });
+
+            // Crear un grupo para el tanque y las patas
+            tankGroup = new THREE.Group();
+            tankGroup.add(tank);
+
+            // Posiciones de las patas utilizando el radio del tanque
+            const legLength = 2; // Longitud de las patas
+            const angles = [0, Math.PI * 2 / 3, Math.PI * 4 / 3]; // Ángulos para las patas en radianes (0, 120, 240 grados)
+
+            angles.forEach(angle => {
+                const leg = new THREE.Mesh(legGeometry, materialLeg);
+                const legX = radius * Math.cos(angle); // Calcula la posición X usando el radio
+                const legZ = radius * Math.sin(angle); // Calcula la posición Z usando el radio
+                leg.position.set(legX, -(legLength - 0.1), legZ); // Coloca la pata un poco más arriba que el fondo del tanque
+                tankGroup.add(leg);
+            });
+
+            scene.add(tankGroup); // Añadir el grupo a la escena
+        }
+
+        // Añadir iluminación
+        const ambientLight = new THREE.AmbientLight(0x404040, 2); // Luz ambiental
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xffffff, 1);
+        pointLight.position.set(5, 5, 5);
+        scene.add(pointLight);
+
+        // Configurar cámara
+        camera.position.z = 10;
+        camera.position.y = 5;
+        camera.lookAt(0, 0, 0);
+
+        // Inicializa el tanque con los valores iniciales
+        const initialRadius = parseFloat(document.getElementById('tankRadius').value) || 1;
+        const initialHeight = parseFloat(document.getElementById('tankHeight').value) || 4;
+        initTank(initialRadius, initialHeight);
+
+        // Animación
+        let rotationSpeed = 0.01; // Velocidad de rotación
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotar el grupo (tanque y patas)
+            if (tankGroup) {
+                tankGroup.rotation.y += rotationSpeed; // Rota alrededor del eje Y
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Actualiza el tanque cuando se cambian los inputs
+        function updateTank() {
+            const radius = parseFloat(document.getElementById('tankRadius').value) || 1;
+            const height = parseFloat(document.getElementById('tankHeight').value) || 4;
+
+            // Elimina el grupo actual
+            scene.remove(tankGroup);
+            // Crea un nuevo tanque con las dimensiones actualizadas
+            initTank(radius, height);
+        }
+
+        document.getElementById('tankHeight').addEventListener('input', updateTank);
+        document.getElementById('tankRadius').addEventListener('input', updateTank);
+
+        // Manejar el redimensionamiento de la ventana
+        window.addEventListener('resize', function () {
+            const width = document.getElementById('tankCanvas').clientWidth;
+            const height = document.getElementById('tankCanvas').clientHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+    });
+</script>
 {% endblock %}
