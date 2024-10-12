@@ -2,184 +2,253 @@
 
 {% block content %}
 
-    <h5>Tank Properties</h5>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th style="width: 50%;">Parameter</th>
-                <th style="width: 50%;">Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tank Height (m)</td>
-                <td>{{ results.tank_height }}</td>
-            </tr>
-            <tr>
-                <td>Tank Radius (m)</td>
-                <td>{{ results.tank_radius }}</td>
-            </tr>
-            <tr>
-                <td>Working Temperature (Kº)</td>
-                <td>{{ results.working_temperature }}</td>
-            </tr>
-            <tr>
-                <td>Working Pressure (atm)</td>
-                <td>{{ results.working_pressure }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row"> <!-- Alineación a la derecha -->
+        <div class="col-8"></div>
+        <div class="col-2">
+            <button id="createReportBtn" class="btn #fafafa grey lighten-5 text-black w-100">Create report</button>
+        </div>
+        <div class="col-2">
+            <button id="approvalBtn" class="btn btn-primary text-white w-100">Approval</button>
+        </div>
+    </div>
+</div>
 
-    <h5>Additional Properties</h5>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th style="width: 50%;">Parameter</th>
-                <th style="width: 50%;">Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Cloak Pressure Design  (lbs/inch2)</td>
-                <td>{{ results.cloak_pressure_design }}</td>
-            </tr>
-            <tr>
-                <td>External Cloak Radius (inches)</td>
-                <td>{{ results.external_cloak_radius }}</td>
-            </tr>
-            <tr>
-                <td>Working Effort Admissible (lbs/inch2)</td>
-                <td>{{ results.working_effort_admissible }}</td>
-            </tr>
-            <tr>
-                <td>Efficiency of Welded Join</td>
-                <td>{{ results.efficiency_of_welded_join }}</td>
-            </tr>
-            <tr>
-                <td>Domus Pressure Design  (lbs/inch2)</td>
-                <td>{{ results.domus_pressure_design }}</td>
-            </tr>
-            <tr>
-                <td>External Domus Radius (inches)</td>
-                <td>{{ results.external_domus_radius }}</td>
-            </tr>
-        </tbody>
-    </table>
+<!-- Toast Element -->
+<div class="toast" id="myToast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; z-index: 1050;">
+    <div class="toast-header">
+    </div>
+    <div class="toast-body">
+    </div>
+</div>
 
-    <h5>Thermal and Geometric Properties</h5>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th style="width: 50%;">Parameter</th>
-                <th style="width: 50%;">Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Environment Temperature (Cº)</td>
-                <td>{{ results.environment_temperature }}</td>
-            </tr>
-            <tr>
-                <td>Nitrogen Temperature (Cº)</td>
-                <td>{{ results.nitrogen_temperature }}</td>
-            </tr>
-            <tr>
-                <td>K1</td>
-                <td>{{ results.k1 }}</td>
-            </tr>
-            <tr>
-                <td>K2</td>
-                <td>{{ results.k2 }}</td>
-            </tr>
-            <tr>
-                <td>K Isolation</td>
-                <td>{{ results.kisolation }}</td>
-            </tr>
-            <tr>
-                <td>R1 Internal (m)</td>
-                <td>{{ results.r1_int }}</td>
-            </tr>
-            <tr>
-                <td>R1 External (m)</td>
-                <td>{{ results.r1_ext }}</td>
-            </tr>
-            <tr>
-                <td>R2 Internal (m)</td>
-                <td>{{ results.r2_int }}</td>
-            </tr>
-            <tr>
-                <td>R2 External (m)</td>
-                <td>{{ results.r2_ext }}</td>
-            </tr>
-            <tr>
-                <td>LC (m)</td>
-                <td>{{ results.lc }}</td>
-            </tr>
-            <tr>
-                <td>H Ambient </td>
-                <td>{{ results.hamb }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <h5>Design Results</h5>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th style="width: 50%;">Parameter</th>
-                <th style="width: 50%;">Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>V (Volume)</td>
-                <td>{{ results.v }}</td>
-            </tr>
-            <tr>
-                <td>n (Moles of Nitrogen)</td>
-                <td>{{ results.n }}</td>
-            </tr>
-            <tr>
-                <td>m (Mass of Nitrogen) [kg]</td>
-                <td>{{ results.m }}</td>
-            </tr>
-            <tr>
-                <td>Metallic Weight [kg]</td>
-                <td>{{ results.metallic_weight }}</td>
-            </tr>
-            <tr>
-                <td>Isolating Material Weight [kg]</td>
-                <td>{{ results.isolating_material_weight }}</td>
-            </tr>
-            <tr>
-                <td>Empty Tank Weight [kg]</td>
-                <td>{{ results.empty_tank_weight }}</td>
-            </tr>
-            <tr>
-                <td>Full Tank Weight [kg]</td>
-                <td>{{ results.full_tank_weight }}</td>
-            </tr>
-            <tr>
-                <td>Cloak Thickness [inches]</td>
-                <td>{{ results.t_cloak_inches }}</td>
-            </tr>
-            <tr>
-                <td>Cloak Thickness [mm]</td>
-                <td>{{ results.t_cloak_mm }}</td>
-            </tr>
-            <tr>
-                <td>Domus Thickness [inches]</td>
-                <td>{{ results.t_domus_inches }}</td>
-            </tr>
-            <tr>
-                <td>Domus Thickness [mm]</td>
-                <td>{{ results.t_domus_mm }}</td>
-            </tr>
-            <tr>
-                <td>Heat Exchange (q)</td>
-                <td>{{ results.q }}</td>
-            </tr>
-        </tbody>
-    </table>
+<h5>Tank Properties</h5>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 50%;">Parameter</th>
+            <th style="width: 50%;">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Tank Height (m)</td>
+            <td>{{ results.tank_height }}</td>
+        </tr>
+        <tr>
+            <td>Tank Radius (m)</td>
+            <td>{{ results.tank_radius }}</td>
+        </tr>
+        <tr>
+            <td>Working Temperature (Kº)</td>
+            <td>{{ results.working_temperature }}</td>
+        </tr>
+        <tr>
+            <td>Working Pressure (atm)</td>
+            <td>{{ results.working_pressure }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h5>Additional Properties</h5>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 50%;">Parameter</th>
+            <th style="width: 50%;">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Cloak Pressure Design  (lbs/inch²)</td>
+            <td>{{ results.cloak_pressure_design }}</td>
+        </tr>
+        <tr>
+            <td>External Cloak Radius (inches)</td>
+            <td>{{ results.external_cloak_radius }}</td>
+        </tr>
+        <tr>
+            <td>Working Effort Admissible (lbs/inch²)</td>
+            <td>{{ results.working_effort_admissible }}</td>
+        </tr>
+        <tr>
+            <td>Efficiency of Welded Join</td>
+            <td>{{ results.efficiency_of_welded_join }}</td>
+        </tr>
+        <tr>
+            <td>Domus Pressure Design  (lbs/inch²)</td>
+            <td>{{ results.domus_pressure_design }}</td>
+        </tr>
+        <tr>
+            <td>External Domus Radius (inches)</td>
+            <td>{{ results.external_domus_radius }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h5>Thermal and Geometric Properties</h5>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 50%;">Parameter</th>
+            <th style="width: 50%;">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Environment Temperature (Cº)</td>
+            <td>{{ results.environment_temperature }}</td>
+        </tr>
+        <tr>
+            <td>Nitrogen Temperature (Cº)</td>
+            <td>{{ results.nitrogen_temperature }}</td>
+        </tr>
+        <tr>
+            <td>K1</td>
+            <td>{{ results.k1 }}</td>
+        </tr>
+        <tr>
+            <td>K2</td>
+            <td>{{ results.k2 }}</td>
+        </tr>
+        <tr>
+            <td>K Isolation</td>
+            <td>{{ results.kisolation }}</td>
+        </tr>
+        <tr>
+            <td>R1 Internal (m)</td>
+            <td>{{ results.r1_int }}</td>
+        </tr>
+        <tr>
+            <td>R1 External (m)</td>
+            <td>{{ results.r1_ext }}</td>
+        </tr>
+        <tr>
+            <td>R2 Internal (m)</td>
+            <td>{{ results.r2_int }}</td>
+        </tr>
+        <tr>
+            <td>R2 External (m)</td>
+            <td>{{ results.r2_ext }}</td>
+        </tr>
+        <tr>
+            <td>LC (m)</td>
+            <td>{{ results.lc }}</td>
+        </tr>
+        <tr>
+            <td>H Ambient</td>
+            <td>{{ results.hamb }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h5>Design Results</h5>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 50%;">Parameter</th>
+            <th style="width: 50%;">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>V (Volume)</td>
+            <td>{{ results.v }}</td>
+        </tr>
+        <tr>
+            <td>n (Moles of Nitrogen)</td>
+            <td>{{ results.n }}</td>
+        </tr>
+        <tr>
+            <td>m (Mass of Nitrogen) [kg]</td>
+            <td>{{ results.m }}</td>
+        </tr>
+        <tr>
+            <td>Metallic Weight [kg]</td>
+            <td>{{ results.metallic_weight }}</td>
+        </tr>
+        <tr>
+            <td>Isolating Material Weight [kg]</td>
+            <td>{{ results.isolating_material_weight }}</td>
+        </tr>
+        <tr>
+            <td>Empty Tank Weight [kg]</td>
+            <td>{{ results.empty_tank_weight }}</td>
+        </tr>
+        <tr>
+            <td>Full Tank Weight [kg]</td>
+            <td>{{ results.full_tank_weight }}</td>
+        </tr>
+        <tr>
+            <td>Cloak Thickness [inches]</td>
+            <td>{{ results.t_cloak_inches }}</td>
+        </tr>
+        <tr>
+            <td>Cloak Thickness [mm]</td>
+            <td>{{ results.t_cloak_mm }}</td>
+        </tr>
+        <tr>
+            <td>Domus Thickness [inches]</td>
+            <td>{{ results.t_domus_inches }}</td>
+        </tr>
+        <tr>
+            <td>Domus Thickness [mm]</td>
+            <td>{{ results.t_domus_mm }}</td>
+        </tr>
+        <tr>
+            <td>Heat Exchange (q)</td>
+            <td>{{ results.q }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const toastElement = document.getElementById('myToast');
+    const toast = new bootstrap.Toast(toastElement);
+
+    document.getElementById('createReportBtn').addEventListener('click', function() {
+        fetch('/report/create/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify()
+        })
+        .then(response => response.json())
+        .then(data => {
+            showToast(data.message);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+    document.getElementById('approvalBtn').addEventListener('click', function() {
+            fetch('/report/approval/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify()
+        })
+        .then(response => response.json())
+        .then(data => {
+            showToast(data.message);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+    function showToast(message) {
+        const toastBody = toastElement.querySelector('.toast-body');
+        toastBody.innerText = message;  // Actualiza el mensaje del toast
+        toast.show();  // Muestra el toast
+    }
+</script>
 
 {% endblock %}

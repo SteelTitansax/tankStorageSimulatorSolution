@@ -6,7 +6,9 @@ import math
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import IntegrityError
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import requests
 
 # Create your views here.
 def home(request):
@@ -242,3 +244,116 @@ def recalculate(request):
 def report(request):
     results = request.session.get('results', {})
     return render(request, 'report.html', {'results': results})
+
+
+@csrf_exempt
+def create_report(request):
+    if request.method == 'POST':
+        # Extraer resultados de la sesión
+        results = request.session.get('results', {})
+
+        # Crear el payload JSON con los resultados
+        payload = {
+            'tank_height': results.get('tank_height'),
+            'tank_radius': results.get('tank_radius'),
+            'working_temperature': results.get('working_temperature'),
+            'working_pressure': results.get('working_pressure'),
+            'cloak_pressure_design': results.get('cloak_pressure_design'),
+            'external_cloak_radius': results.get('external_cloak_radius'),
+            'working_effort_admissible': results.get('working_effort_admissible'),
+            'efficiency_of_welded_join': results.get('efficiency_of_welded_join'),
+            'domus_pressure_design': results.get('domus_pressure_design'),
+            'external_domus_radius': results.get('external_domus_radius'),
+            't_environment': results.get('t_environment'),
+            't_nitro': results.get('t_nitro'),
+            'k1': results.get('k1'),
+            'k2': results.get('k2'),
+            'kisolation': results.get('kisolation'),
+            'r1_int': results.get('r1_int'),
+            'r1_ext': results.get('r1_ext'),
+            'r2_int': results.get('r2_int'),
+            'r2_ext': results.get('r2_ext'),
+            'lc': results.get('lc'),
+            'hamb': results.get('hamb'),
+            'v': results.get('v'),
+            'n': results.get('n'),
+            'm': results.get('m'),
+            'metallic_weight': results.get('metallic_weight'),
+            'isolating_material_weight': results.get('isolating_material_weight'),
+            'empty_tank_weight': results.get('empty_tank_weight'),
+            'full_tank_weight': results.get('full_tank_weight'),
+            't_cloak_inches': results.get('t_cloak_inches'),
+            't_cloak_mm': results.get('t_cloak_mm'),
+            't_domus_inches': results.get('t_domus_inches'),
+            't_domus_mm': results.get('t_domus_mm'),
+            'q': results.get('q'),
+        }
+
+        print("Payload to Power Automate:", payload)  # Depuración
+
+        # Lógica para enviar la solicitud HTTP a Power Automate
+        response = requests.post(
+            "https://prod-07.northcentralus.logic.azure.com:443/workflows/f56b9e1d913a41e3a66d6752e1fab99c/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=N2xX4ncMtUrKkcdUm-3iH4U3BTJg9HyoKTwlxSN5gSY",
+            json=payload  # Enviar el payload JSON
+        )
+
+        if response.status_code == 200:
+            return JsonResponse({'message': 'Report created successfully'}, status=200)
+        elif response.status_code == 400:
+            print("Response Content:", response.content)  # Imprimir el contenido de la respuesta
+            return JsonResponse({'message': 'Failed to create report'}, status=400)
+
+
+@csrf_exempt
+def approval(request):
+    if request.method == 'POST':
+        # Extraer resultados de la sesión
+        results = request.session.get('results', {})
+
+        # Crear el payload JSON con los resultados
+        payload = {
+            'tank_height': results.get('tank_height'),
+            'tank_radius': results.get('tank_radius'),
+            'working_temperature': results.get('working_temperature'),
+            'working_pressure': results.get('working_pressure'),
+            'cloak_pressure_design': results.get('cloak_pressure_design'),
+            'external_cloak_radius': results.get('external_cloak_radius'),
+            'working_effort_admissible': results.get('working_effort_admissible'),
+            'efficiency_of_welded_join': results.get('efficiency_of_welded_join'),
+            'domus_pressure_design': results.get('domus_pressure_design'),
+            'external_domus_radius': results.get('external_domus_radius'),
+            't_environment': results.get('t_environment'),
+            't_nitro': results.get('t_nitro'),
+            'k1': results.get('k1'),
+            'k2': results.get('k2'),
+            'kisolation': results.get('kisolation'),
+            'r1_int': results.get('r1_int'),
+            'r1_ext': results.get('r1_ext'),
+            'r2_int': results.get('r2_int'),
+            'r2_ext': results.get('r2_ext'),
+            'lc': results.get('lc'),
+            'hamb': results.get('hamb'),
+            'v': results.get('v'),
+            'n': results.get('n'),
+            'm': results.get('m'),
+            'metallic_weight': results.get('metallic_weight'),
+            'isolating_material_weight': results.get('isolating_material_weight'),
+            'empty_tank_weight': results.get('empty_tank_weight'),
+            'full_tank_weight': results.get('full_tank_weight'),
+            't_cloak_inches': results.get('t_cloak_inches'),
+            't_cloak_mm': results.get('t_cloak_mm'),
+            't_domus_inches': results.get('t_domus_inches'),
+            't_domus_mm': results.get('t_domus_mm'),
+            'q': results.get('q'),
+        }
+
+        # Lógica para enviar la solicitud HTTP a Power Automate
+        response = requests.post(
+            "https://prod-07.northcentralus.logic.azure.com:443/workflows/f56b9e1d913a41e3a66d6752e1fab99c/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=N2xX4ncMtUrKkcdUm-3iH4U3BTJg9HyoKTwlxSN5gSY",
+            json=payload  # Enviar el payload JSON
+        )
+
+        if response.status_code == 200:
+            return JsonResponse({'message': 'Approval start completed'}, status=200)
+        else:
+            return JsonResponse({'message': 'Failed to initiate approval'}, status=400)
